@@ -1,0 +1,18 @@
+{% import 'macros.html'as from with context%}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>主页</title>
+    <script src="{{ url_for('static',filename='index.js') }}"></script>
+
+</head>
+<body>
+
+<form action="#">
+    {{ from.input('用户名','username') }}
+    {{ from.input('密码','password','password') }}
+</form>
+
+</body>
+</html>
