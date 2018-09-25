@@ -20,3 +20,7 @@ SQLALCHEMY_TRACK_MODIFICATIONS=False  #如果设置成 True (默认情况)，Fla
 SQLALCHEMY_ECHO=True #如果设置成 True，SQLAlchemy 将会记录所有发到标准输出(stderr)的语句，这对调试很有帮助;默认为false；
 
 SECRET_KEY='ada'
+REMBERME = 'remberme'
+LOGIN = 'login'
+CURRENT_USER_ID='user_id'
+CURRENT_USER = "current_user"

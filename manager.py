@@ -10,6 +10,13 @@ manage=Manager(app)
 Migrate(app,db)
 manage.add_command('db',MigrateCommand)
 
+@manage.option('-e','--email',dest='email')
+@manage.option('-u','--username',dest='username')
+@manage.option('-p','--password',dest='password')
+def addcmsuser(email,username,password):
+    user = User(email=email,username=username,password=password)
+    db.session.add(user)
+    db.session.commit()
 
 if __name__ == '__main__':
     manage.run()
