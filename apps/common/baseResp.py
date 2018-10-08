@@ -1,3 +1,4 @@
+#定义个返回response类，方便使用
 class BaseResp:
     def __init__(self,code,msg,data=None):
         self.code=code
