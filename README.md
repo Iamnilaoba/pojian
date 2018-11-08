@@ -3,8 +3,7 @@
 
 常见面试题：
   1.快速排序
-   def quickly(list):
-         md=list[0]def quick(L):
+        def quick(L):
    	 if len(L) <= 1: return L
     	return quick([i for i in L[1:] if i < L[0]]) + L[0:1] + quick([j for j in L[1:] if j >= L[0]])
   
