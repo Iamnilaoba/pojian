@@ -1,17 +1,50 @@
-# pojian
-我的第一个Git数据库
+1. 下载  pip install flask-wtf
+2. 暂时关闭crsf app.config["WTF_CSRF_ENABLED"] = False
+3. 继承FlaskForm写自己的检验的form
+4. 初始化 fm = UserForm(formdata=request.form)   fm.validate()
+5. 获取错误 fm.errors
 
-常见面试题：
-  1.快速排序
-        def quick(L):
-   	 if len(L) <= 1: return L
-    	return quick([i for i in L[1:] if i < L[0]]) + L[0:1] + quick([j for j in L[1:] if j >= L[0]])
-  
-虚拟环境：（创建一个全新的python虚拟环境，将环境变量加入pycharm解释器中方便我们使用）
-	1.安装：pip install virtualenv 
-	2.mkdir myproject：创建一个文件夹用来存放即将要创建的虚拟环境，最好cd到桌面创建
-	3.cd myproject/：cd到这个文件夹
-	4.virtualenv --no-site-packages venv  #创建一个独立的Python运行环境，命名为venv
-	   --no-site-packages 不会把第三方包复制过来,这样子得到一个干净的运行环境
-	5.source ven/bin/activate：用source进入该环境（加入系统环境变量后可直接使用‘activate’进入）
-	6.deactivate：退出该虚拟环境  
+自定义校验器
+
+1. 先定义这个字段
+2. validate_字段名(self,field)
+   值: field.data
+   通过判断返回异常 ValidationError(message="你写的这个东西不符合要求")
+
+# 文件上传下载
+
+```python
+form表单中enctype="multipart/form-data"
+在服务器 file =  request.files 来获取文件数据
+文件名称 file.filename 获取的文件名称，一定要服务器生成一个唯一的（否则会覆盖）
+file.save('路径')
+
+# 下载
+```
+
+   send_from_directory('图片文件夹',图片的名称)
+
+```python
+文件校验
+使用FileField(validators=[file_required(message="文件不能为空"),
+                              FileAllowed({'jpg','gif'},message="文件只能是jpg和gif格式")])
+使用CombinedMultiDict([request.form,request.files]) 进行两个字典的合并
+```
+
+# cookie和session
+
+因为http是无状态的，所有跟踪用户的行为
+cookie
+
+session
+​    flask实现的session使用cookie进行传递
+
+
+
+**上下文对象**
+
+**钩子函数**
+
+**crsf攻击和防御**
+
+**restful使用（移动端，公众号）**
